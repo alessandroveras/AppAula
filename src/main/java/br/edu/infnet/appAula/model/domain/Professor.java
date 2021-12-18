@@ -3,9 +3,9 @@ package br.edu.infnet.appAula.model.domain;
 public class Professor {
     private Integer id;
 
-    private final String nome;
-    private final String email;
-    private final String cpf;
+    private String nome;
+    private String email;
+    private String cpf;
 
     public Professor(String nome, String email, String cpf) {
         this.nome = nome;

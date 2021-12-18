@@ -30,16 +30,18 @@ public class AulaTest {
 		atividades.add(alongamento);
 
 		Professor professor = new Professor("Maria Personal", "maria.personal@bodytech.com.br", "10177249706");
-		//TODO Preencher atributos de professor
-		
-		Aluno aluno = new Aluno();
-		//TODO Preencher atributos de Aluno;
-		
+		professor.setId(999);
+
+		Aluno aluno = new Aluno("Joao Aluno", "joao@aluno.com", "11111111111", "Premium");
+		aluno.setId(10);
+
 		Aula aula = new Aula();
 		aula.setId(1);
+		aula.setDuracao(1);
 		aula.setProfessor(professor);		
 		aula.setAluno(aluno);
-		//TODO Preencher atributos de aula;
+		aula.setAtividades(atividades);
+		System.out.println(aula);
 		
 		
 
