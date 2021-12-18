@@ -11,13 +11,16 @@
 <head>
     <title>AppAula</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
 <div class="container mt-3">
 
     <c:if test="${not empty msg}">
-        <div class="alert alert-warning">
+        <div class="alert alert-warning alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             <strong>Atenção!</strong> ${msg}
         </div>
     </c:if>
@@ -39,5 +42,12 @@
         <button type="submit" class="btn btn-primary">Acessar</button>
     </form>
 </div>
+<%--<script type="text/javascript">--%>
+<%--    window.setTimeout(function() {--%>
+<%--        $(".alert").fadeTo(500, 0).slideUp(500, function(){--%>
+<%--            $(this).remove();--%>
+<%--        });--%>
+<%--    }, 2000);--%>
+<%--</script>--%>
 </body>
 </html>

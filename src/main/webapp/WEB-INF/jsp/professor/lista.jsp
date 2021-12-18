@@ -13,6 +13,7 @@
     <title>AppAulas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 </head>
 <body>
@@ -42,17 +43,21 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>Id</th>
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>CPF</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="professor" items="${lista}">
                 <tr>
+                    <td>${professor.id}</td>
                     <td>${professor.nome}</td>
                     <td>${professor.email}</td>
                     <td>${professor.cpf}</td>
+                    <td><a href="/professor/${professor.id}/excluir">Excluir</a></td>
                 </tr>
             </c:forEach>
 
@@ -63,5 +68,13 @@
         <h2>Não existem professores cadastrados!!!</h2>
     </c:if>
 </div>
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".alert-success").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
+</script>
 </body>
+
 </html>
