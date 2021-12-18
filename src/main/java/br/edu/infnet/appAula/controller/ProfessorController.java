@@ -35,7 +35,7 @@ public class ProfessorController {
     @PostMapping(value = "/professor/incluir")
     public String incluir(Model model, Professor professor) {
 
-        model.addAttribute("nome", professor.getNome());
-        return "confirmacao";
+        model.addAttribute("mensagem", "O professor " + professor.getNome() + " foi cadastrado com sucesso.");
+        return telaLista(model);
     }
 }

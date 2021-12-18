@@ -20,55 +20,21 @@
     <h2>Cadastramento de Professores</h2>
     <form action="/professor/incluir" method="post">
         <div class="mb-3 mt-3">
-            <label>Email:</label>
-            <input type="email" class="form-control" placeholder="Entre com seu e-mail" name="email"
-                   value="alessandro.veras@gmail.com">
-        </div>
-        <div class="mb-3 mt-3">
             <label>Nome:</label>
-            <input type="text" class="form-control" placeholder="Entre com seu nome" name="nome"
-                   value="Alessandro Veras">
+            <input type="text" class="form-control" placeholder="Entre com seu nome:" name="nome"
+                   value="Alessandro Personal">
         </div>
         <div class="mb-3 mt-3">
-            <label>Curso:</label>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" name="radioCurso" value="graduacao" checked>
-                <label class="form-check-label">Graduação</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" name="radioCurso" value="especializacao">
-                <label class="form-check-label">Especialização</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" name="radioCurso" value="mestrado">
-                <label class="form-check-label">Mestrado</label>
-            </div>
+            <label>Email:</label>
+            <input type="email" class="form-control" placeholder="Entre com seu e-mail:" name="email"
+                   value="alessandro@bodytech.com">
         </div>
         <div class="mb-3 mt-3">
-            <label>Disciplinas:</label>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="checkDisciplinas" value="fundamentosJava">
-                <label class="form-check-label">Fundamentos Java</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="checkDisciplinas" value="javaWeb" checked>
-                <label class="form-check-label">Java Web</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="checkDisciplinas" value="poo">
-                <label class="form-check-label">POO</label>
-            </div>
+            <label>CPF:</label>
+            <input type="text" class="form-control" placeholder="Entre com seu cpf:" name="cpf"
+                   value="101.002.497-06">
         </div>
-        <div class="mb-3 mt-3">
-            <label class="form-label">Região:</label>
-            <select class="form-select" name="regiao">
-                <option>Sul</option>
-                <option>Sudeste</option>
-                <option selected>Centro-Oeste</option>
-                <option>Norte</option>
-                <option>Nordeste</option>
-            </select>
-        </div>
+        
         <button type="submit" class="btn btn-primary">Cadastar</button>
     </form>
 </div>

@@ -12,11 +12,20 @@
     <meta charset="ISO-8859-1">
     <title>AppAulas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 </head>
 <body>
 
 <div class="container mt-3">
+
+    <c:if test="${not empty mensagem}">
+        <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Confirmação!</strong> ${mensagem}
+        </div>
+    </c:if>
+
     <h2>Cadastramento de Professores</h2>
 
     <form action="/professor" method="get">
@@ -39,11 +48,11 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="a" items="${lista}">
+            <c:forEach var="professor" items="${lista}">
                 <tr>
-                    <td>${a.nome}</td>
-                    <td>${a.email}</td>
-                    <td>${a.cpf}</td>
+                    <td>${professor.nome}</td>
+                    <td>${professor.email}</td>
+                    <td>${professor.cpf}</td>
                 </tr>
             </c:forEach>
 
