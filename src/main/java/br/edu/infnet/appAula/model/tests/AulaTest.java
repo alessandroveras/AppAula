@@ -28,8 +28,8 @@ public class AulaTest {
 		atividades.add(musculacao);
 		atividades.add(aerobico);
 		atividades.add(alongamento);
-		
-		Professor professor = new Professor();
+
+		Professor professor = new Professor("Maria Personal", "maria.personal@bodytech.com.br", "10177249706");
 		//TODO Preencher atributos de professor
 		
 		Aluno aluno = new Aluno();

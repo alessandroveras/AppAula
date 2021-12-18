@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>Confirmação</title>
@@ -16,9 +18,8 @@
 </head>
 <body>
 <div class="container mt-3">
-    <h2>Professor cadastrado com sucesso!!!</h2>
-    <form action="/professor" method="get">
-
+    <h2>O professor ${nome} foi cadastrado com sucesso!!!</h2>
+    <form action="/professores" method="get">
         <button type="submit" class="btn btn-primary">Voltar</button>
     </form>
 </div>

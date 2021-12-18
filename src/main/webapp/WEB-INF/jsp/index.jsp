@@ -14,8 +14,8 @@
     <h2>AppAula: Sistema de Gestao de Aulas pra Personal Trainers</h2>
     <h3>Alessandro Veras Santos</h3>
 
-    <h4><a href="/professor">Cadastramento de Professores</a></h4>
-    <h4><a href="aluno">Cadastramento de Alunos</a></h4>
+    <h4><a href="/professores">Cadastramento de Professores</a></h4>
+    <h4><a href="/alunos">Cadastramento de Alunos</a></h4>
 
 </div>
 
