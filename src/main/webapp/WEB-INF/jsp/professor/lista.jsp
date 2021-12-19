@@ -18,6 +18,8 @@
 </head>
 <body>
 
+<c:import url="/WEB-INF/jsp/menu.jsp"/>
+
 <div class="container mt-3">
 
     <c:if test="${not empty mensagem}">
@@ -47,6 +49,7 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>CPF</th>
+                <th>Usuario</th>
                 <th></th>
             </tr>
             </thead>
@@ -57,6 +60,7 @@
                     <td>${professor.nome}</td>
                     <td>${professor.email}</td>
                     <td>${professor.cpf}</td>
+                    <td>${professor.usuario.nome}</td>
                     <td><a href="/professor/${professor.id}/excluir">Excluir</a></td>
                 </tr>
             </c:forEach>

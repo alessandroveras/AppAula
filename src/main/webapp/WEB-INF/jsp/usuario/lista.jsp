@@ -18,8 +18,9 @@
 </head>
 <body>
 
-<div class="container mt-3">
+<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
+<div class="container mt-3">
 
     <h2>Cadastramento de Usuários</h2>
 
@@ -35,7 +36,10 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>E-mail</th>
-                <th></th>
+                <c:if test="${user.admin}">
+                    <th></th>
+                </c:if>
+
             </tr>
             </thead>
             <tbody>
@@ -44,7 +48,11 @@
                     <td>${usuario.id}</td>
                     <td>${usuario.nome}</td>
                     <td>${usuario.email}</td>
-                    <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                    <td>${usuario.professores.size()}</td>
+
+                    <c:if test="${user.admin}">
+                        <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                    </c:if>
                 </tr>
             </c:forEach>
 

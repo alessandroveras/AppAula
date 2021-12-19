@@ -16,6 +16,8 @@
 </head>
 <body>
 
+<c:import url="/WEB-INF/jsp/menu.jsp"/>
+
 <div class="container mt-3">
 
     <c:if test="${not empty msg}">
@@ -30,13 +32,13 @@
         <div class="mb-3 mt-3">
             <label>E-mail:</label>
             <input type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email"
-                   value="alessandro.veras@gmail.com">
+                   value="administrador@mygym.com">
         </div>
 
         <div class="mb-3">
             <label>Senha:</label>
             <input type="password" class="form-control" placeholder="Entre com a sua senha" name="senha"
-                   value="alessandro.veras@gmail.com">
+                   value="1234">
         </div>
 
         <button type="submit" class="btn btn-primary">Acessar</button>

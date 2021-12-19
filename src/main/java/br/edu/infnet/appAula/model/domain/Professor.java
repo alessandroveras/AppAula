@@ -13,6 +13,13 @@ public class Professor {
     private String nome;
     private String email;
     private String cpf;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
     public Professor() {
     }
@@ -53,6 +60,10 @@ public class Professor {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

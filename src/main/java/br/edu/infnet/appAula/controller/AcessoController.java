@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+
+import javax.servlet.http.HttpSession;
 
 @SessionAttributes("user")
 @Controller
@@ -32,12 +35,22 @@ public class AcessoController {
 
         Usuario usuario = usuarioService.validar(email, senha);
 
-        if (usuario != null ) {
+        if (usuario != null) {
             model.addAttribute("user", usuario);
             return "index";
         } else {
             model.addAttribute("msg", "Impossível realizar a autenticação: " + email + "!");
             return "login";
         }
+    }
+
+    @GetMapping(value = "/logout")
+    public String telaLogout(HttpSession session, SessionStatus status) {
+
+        status.setComplete();
+
+        session.removeAttribute("user");
+
+        return "redirect:/";
     }
 }

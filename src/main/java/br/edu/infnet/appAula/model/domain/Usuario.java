@@ -1,6 +1,7 @@
 package br.edu.infnet.appAula.model.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "TUsuario")
@@ -13,10 +14,13 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private boolean admin;
+    private Boolean admin;
+
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idUsuario")
+    private List<Professor> professores;
 
     public Usuario() {
-        this.admin = true;
     }
 
     public Integer getId() {
@@ -53,6 +57,22 @@ public class Usuario {
 
     public boolean isAdmin() {
         return admin;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    public List<Professor> getProfessores() {
+        return professores;
+    }
+
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
     }
 
     @Override
