@@ -51,4 +51,8 @@ public class Usuario {
         return admin;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Olá, %s (%s) %s", this.nome, this.email, this.admin ? "*" : "");
+    }
 }
