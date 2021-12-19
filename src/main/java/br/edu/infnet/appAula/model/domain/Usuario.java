@@ -15,6 +15,10 @@ public class Usuario {
     private String senha;
     private boolean admin;
 
+    public Usuario() {
+        this.admin = true;
+    }
+
     public Integer getId() {
         return id;
     }
