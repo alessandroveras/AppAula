@@ -1,41 +1,38 @@
 package br.edu.infnet.appAula.model.service;
 
 import br.edu.infnet.appAula.model.domain.Professor;
+import br.edu.infnet.appAula.model.repository.ProfessorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ProfessorService {
 
-    private static Integer id = 1;
-    private final Map<Integer, Professor> mapaProfessor = new HashMap<Integer, Professor>();
+    @Autowired
+    private ProfessorRepository professorRepository;
 
     public List<Professor> obterLista() {
 
-        return new ArrayList<Professor>(mapaProfessor.values());
+        return (List<Professor>) professorRepository.findAll();
     }
 
     public void incluir(Professor professor) {
 
-        professor.setId(id++);
-
-        mapaProfessor.put(professor.getId(), professor);
+        professorRepository.save(professor);
 
     }
 
     public void excluir(Integer id) {
 
-        mapaProfessor.remove(id);
+        professorRepository.deleteById(id);
 
     }
 
     public Professor obterPorId(Integer id) {
 
-        return mapaProfessor.get(id);
+        return professorRepository.findById(id).orElse(null);
     }
 
 
