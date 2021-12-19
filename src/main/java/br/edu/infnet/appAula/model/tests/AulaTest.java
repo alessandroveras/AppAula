@@ -14,16 +14,13 @@ import br.edu.infnet.appAula.model.domain.Professor;
 public class AulaTest {
 
 	public static void main(String[] args) {
-		
-		Musculacao musculacao = new Musculacao();
-		//TODO Preencher atributos de musculacao;
-		
-		Aerobico aerobico = new Aerobico();
-		//TODO Preencher atributos de aerobico;
-		
-		Alongamento alongamento = new Alongamento();
-		//TODO Preencher atributos de alongamento;
-		
+
+		Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true );
+
+		Aerobico aerobico = new Aerobico(30, "Musculacao", "Media", false);
+
+		Alongamento alongamento = new Alongamento(10, "Alongamento", "Baixa", false);
+
 		List<Atividade> atividades = new ArrayList<Atividade>();
 		atividades.add(musculacao);
 		atividades.add(aerobico);

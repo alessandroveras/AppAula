@@ -6,7 +6,8 @@ public class MusculacaoTest {
 	
 	public static void main(String[] args) {
 		
-		Musculacao musculacao = new Musculacao();
+		Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true );
+		System.out.println("Calorias queimadas: " + musculacao.calcularCaloriasQueimadas());
 	}
 
 }

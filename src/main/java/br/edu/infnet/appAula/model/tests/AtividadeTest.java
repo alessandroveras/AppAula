@@ -8,11 +8,14 @@ public class AtividadeTest {
 
 	public static void main(String[] args) {
 
-		Musculacao musculacao = new Musculacao();
-		
-		Aerobico aerobico = new Aerobico();
-		
-		Alongamento alongamento = new Alongamento();
+		Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true );
+		System.out.print("Musculacao: " + musculacao);
+
+		Aerobico aerobico = new Aerobico(30, "Musculacao", "Media", false);
+		System.out.print("Aerobico: " + aerobico);
+
+		Alongamento alongamento = new Alongamento(10, "Alongamento", "Baixa", false);
+		System.out.print("Alongamento: " + alongamento);
 		
 	}
 
