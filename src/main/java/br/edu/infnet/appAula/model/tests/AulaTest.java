@@ -1,47 +1,74 @@
 package br.edu.infnet.appAula.model.tests;
 
+import br.edu.infnet.appAula.exceptions.CaloriasPorMinutoInvalidException;
+import br.edu.infnet.appAula.exceptions.DuracaoMinutosInvalidException;
+import br.edu.infnet.appAula.exceptions.IntensidadeInvalidException;
+import br.edu.infnet.appAula.exceptions.MembroNullException;
+import br.edu.infnet.appAula.model.domain.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.infnet.appAula.model.domain.Aerobico;
-import br.edu.infnet.appAula.model.domain.Alongamento;
-import br.edu.infnet.appAula.model.domain.Aluno;
-import br.edu.infnet.appAula.model.domain.Atividade;
-import br.edu.infnet.appAula.model.domain.Aula;
-import br.edu.infnet.appAula.model.domain.Musculacao;
-import br.edu.infnet.appAula.model.domain.Professor;
-
 public class AulaTest {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true );
+        List<Atividade> atividades = new ArrayList<Atividade>();
 
-		Aerobico aerobico = new Aerobico(30, "Musculacao", "Media", false);
+        try {
+            Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true);
+            musculacao.setExercicio("Triceps testa");
+            musculacao.setGrupamentoMuscular("triceps");
+            musculacao.setAparelho("Alter");
+            musculacao.setCarga(20.0F);
+            musculacao.setCaloriasPorMinuto(2);
 
-		Alongamento alongamento = new Alongamento(10, "Alongamento", "Baixa", false);
+            atividades.add(musculacao);
+        } catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+            System.out.println(e.getMessage());
+        }
 
-		List<Atividade> atividades = new ArrayList<Atividade>();
-		atividades.add(musculacao);
-		atividades.add(aerobico);
-		atividades.add(alongamento);
+        try {
+            Aerobico aerobico = new Aerobico(30, "Musculacao", "Media", false);
+            aerobico.setEquipamento("Esteira Ergometrica");
+            aerobico.setCoolDownMinutos(5);
+            aerobico.setUsarCarga(false);
+            aerobico.setCaloriasPorMinuto(10);
 
-		Professor professor = new Professor("Maria Personal", "maria.personal@bodytech.com.br", "10177249706");
-		professor.setId(999);
+            atividades.add(aerobico);
+        } catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+            System.out.println(e.getMessage());
+        }
 
-		Aluno aluno = new Aluno("Joao Aluno", "joao@aluno.com", "11111111111", "Premium");
-		aluno.setId(10);
 
-		Aula aula = new Aula();
-		aula.setId(1);
-		aula.setDuracao(1);
-		aula.setProfessor(professor);		
-		aula.setAluno(aluno);
-		aula.setAtividades(atividades);
-		System.out.println(aula);
-		
-		
+        try {
+            Alongamento alongamento = new Alongamento(10, "Alongamento", "Baixa", false);
+            alongamento.setAparelho("livre");
+            alongamento.setMembro("braco");
+            alongamento.setRequerAssistencia(false);
 
-	}
+            atividades.add(alongamento);
+
+        } catch (MembroNullException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        Professor professor = new Professor("Maria Personal", "maria.personal@bodytech.com.br", "10177249706");
+        professor.setId(999);
+
+        Aluno aluno = new Aluno("Joao Aluno", "joao@aluno.com", "11111111111", "Premium");
+        aluno.setId(10);
+
+        Aula aula = new Aula();
+        aula.setId(1);
+        aula.setDuracao(1);
+        aula.setProfessor(professor);
+        aula.setAluno(aluno);
+        aula.setAtividades(atividades);
+        System.out.println(aula);
+
+
+    }
 
 }

@@ -1,16 +1,34 @@
 package br.edu.infnet.appAula.model.domain;
 
+import br.edu.infnet.appAula.exceptions.DuracaoMinutosInvalidException;
+import br.edu.infnet.appAula.exceptions.IntensidadeInvalidException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Atividade {
     private Integer id;
 
-    private final Integer duracaoMinutos;
-    private final String descricao;
-	private final String intensidade;
-    private final Boolean supervisionada;
+    private Integer duracaoMinutos;
+    private String descricao;
+	private String intensidade;
+    private Boolean supervisionada;
 
-    public Atividade(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) {
-        this.duracaoMinutos = duracaoMinutos;
+    public Atividade(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
+
+        if (duracaoMinutos <=0){
+            throw new DuracaoMinutosInvalidException("Impossivel criar atividade com duracao invalida [<=0]");
+        }
+        List<String> listaIntensidade = new ArrayList<String>();
+        listaIntensidade.add("Baixa");
+        listaIntensidade.add("Alta");
+        listaIntensidade.add("Media");
+
+        if  (!listaIntensidade.contains(intensidade)) {
+            throw new IntensidadeInvalidException("Intensidade possui um valor designado invalido, favor selecionar um valor dentre a lista [Baixa, Media, Alta]");
+        }
         this.descricao = descricao;
+        this.duracaoMinutos = duracaoMinutos;
 		this.intensidade = intensidade;
 		this.supervisionada = supervisionada;
     }
@@ -23,8 +41,12 @@ public abstract class Atividade {
         this.id = id;
     }
 
-    public Integer getDuracao() {
+    public Integer getDuracaoMinutos() {
         return duracaoMinutos;
+    }
+
+    public void setDuracaoMinutos(Integer duracaoMinutos) {
+        this.duracaoMinutos = duracaoMinutos;
     }
 
     public String getDescricao() {
@@ -55,6 +77,7 @@ public abstract class Atividade {
 		sb.append(supervisionada);
 		sb.append(";");
 		sb.append(this.calcularCaloriasQueimadas());
+        sb.append(";");
 
         return sb.toString();
     }

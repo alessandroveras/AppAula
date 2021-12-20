@@ -41,12 +41,19 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "Aluno{" +
-				"id=" + id +
-				", nome='" + nome + '\'' +
-				", email='" + email + '\'' +
-				", cpf='" + cpf + '\'' +
-				", plano='" + plano + '\'' +
-				'}';
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(id);
+		sb.append(";");
+		sb.append(nome);
+		sb.append(";");
+		sb.append(email);
+		sb.append(";");
+		sb.append(cpf);
+		sb.append(";");
+		sb.append(plano);
+		sb.append(";");
+
+		return sb.toString();
 	}
 }
