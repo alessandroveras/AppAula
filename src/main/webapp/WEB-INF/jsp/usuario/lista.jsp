@@ -36,6 +36,7 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>E-mail</th>
+                <th>Professores</th>
                 <c:if test="${user.admin}">
                     <th></th>
                 </c:if>
@@ -51,7 +52,12 @@
                     <td>${usuario.professores.size()}</td>
 
                     <c:if test="${user.admin}">
-                        <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                        <c:if test="${user.id != usuario.id}">
+                            <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                        </c:if>
+                        <c:if test="${user.id == usuario.id}">
+                            <td>-</td>
+                        </c:if>
                     </c:if>
                 </tr>
             </c:forEach>

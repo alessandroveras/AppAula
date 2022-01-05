@@ -16,11 +16,13 @@ public class Usuario {
     private String senha;
     private Boolean admin;
 
+
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "idUsuario")
     private List<Professor> professores;
 
     public Usuario() {
+        this.admin = false;
     }
 
     public Integer getId() {
