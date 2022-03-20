@@ -10,7 +10,6 @@ public class Aula {
     private Integer duracao;
 
     private Professor professor;
-    private Aluno aluno;
     private List<Atividade> atividades;
 
     public Aula() {
@@ -46,14 +45,6 @@ public class Aula {
         this.professor = professor;
     }
 
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
     public List<Atividade> getAtividades() {
         return atividades;
     }
@@ -71,9 +62,8 @@ public class Aula {
                 this.data.format(formato),
                 this.duracao,
                 this.professor,
-                this.aluno,
                 this.atividades.size()
-                );
+        );
 
         return mensagem;
 
