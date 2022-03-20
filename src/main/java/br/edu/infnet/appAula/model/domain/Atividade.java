@@ -3,12 +3,18 @@ package br.edu.infnet.appAula.model.domain;
 import br.edu.infnet.appAula.exceptions.DuracaoMinutosInvalidException;
 import br.edu.infnet.appAula.exceptions.IntensidadeInvalidException;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "TAtividade")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Atividade {
-    private Integer id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private Integer duracaoMinutos;
     private String descricao;
 	private String intensidade;
@@ -31,6 +37,10 @@ public abstract class Atividade {
         this.duracaoMinutos = duracaoMinutos;
 		this.intensidade = intensidade;
 		this.supervisionada = supervisionada;
+    }
+
+    public Atividade() {
+
     }
 
     public Integer getId() {

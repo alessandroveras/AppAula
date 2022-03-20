@@ -4,6 +4,10 @@ import br.edu.infnet.appAula.exceptions.CaloriasPorMinutoInvalidException;
 import br.edu.infnet.appAula.exceptions.DuracaoMinutosInvalidException;
 import br.edu.infnet.appAula.exceptions.IntensidadeInvalidException;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TMusculacao")
 public class Musculacao extends Atividade {
 
     private String exercicio;
@@ -11,6 +15,10 @@ public class Musculacao extends Atividade {
     private String aparelho;
     private Float carga;
     private Integer caloriasPorMinuto;
+
+    public Musculacao() {
+
+    }
 
     public Musculacao(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
         super(duracaoMinutos, descricao, intensidade, supervisionada);

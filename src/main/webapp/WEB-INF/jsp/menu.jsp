@@ -28,22 +28,24 @@
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/usuarios">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="/professores">Professor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/alunos">Aluno</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Atividade</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Musculacao</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/musculacoes">Musculacao</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Aerobico</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Alongamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Aula</a></li>
                 </c:if>
             </ul>
             <ul class="navbar-nav navbar-right nav-flex-icons">
 
                 <c:if test="${empty user}">
-                    <li class="nav-item"><a class="nav-link " href="/usuario" ><i class="bi-person"></i> Sign Up</a></li>
-                    <li class="nav-item"><a class="nav-link " href="/login"><i class="bi-box-arrow-in-right"></i> Login</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/usuario"><i class="bi-person"></i> Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/login"><i class="bi-box-arrow-in-right"></i> Login</a>
+                    </li>
                 </c:if>
 
                 <c:if test="${not empty user}">
-                    <li class="nav-item"><a class="nav-link " href="/logout"><i class="bi-box-arrow-in-left"></i> Logout, ${user.nome}</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/logout"><i class="bi-box-arrow-in-left"></i>
+                        Logout, ${user.nome}</a></li>
                 </c:if>
             </ul>
 
