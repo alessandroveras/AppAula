@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <html>
 <head>
     <meta charset="ISO-8859-1">
@@ -55,7 +56,7 @@
             <c:forEach var="aula" items="${lista}">
                 <tr>
                     <td>${aula.id}</td>
-                    <td>${aula.data}</td>
+                    <td>${aula.data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))}</td>
                     <td>${aula.duracao}</td>
                     <td><a href="/aula/${aula.id}/excluir">Excluir</a></td>
                 </tr>
