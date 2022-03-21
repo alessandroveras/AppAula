@@ -15,32 +15,25 @@ public abstract class Atividade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer duracaoMinutos;
     private String descricao;
+    private Integer duracaoMinutos;
 	private String intensidade;
     private Boolean supervisionada;
 
-    public Atividade(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
-
-        if (duracaoMinutos <=0){
-            throw new DuracaoMinutosInvalidException("Impossivel criar atividade com duracao invalida [<=0]");
-        }
-        List<String> listaIntensidade = new ArrayList<String>();
-        listaIntensidade.add("Baixa");
-        listaIntensidade.add("Alta");
-        listaIntensidade.add("Media");
-
-        if  (!listaIntensidade.contains(intensidade)) {
-            throw new IntensidadeInvalidException("Intensidade possui um valor designado invalido, favor selecionar um valor dentre a lista [Baixa, Media, Alta]");
-        }
-        this.descricao = descricao;
-        this.duracaoMinutos = duracaoMinutos;
-		this.intensidade = intensidade;
-		this.supervisionada = supervisionada;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     public Atividade() {
 
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getId() {
@@ -63,7 +56,19 @@ public abstract class Atividade {
         return descricao;
     }
 
-	public String getIntensidade() {
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setIntensidade(String intensidade) {
+        this.intensidade = intensidade;
+    }
+
+    public void setSupervisionada(Boolean supervisionada) {
+        this.supervisionada = supervisionada;
+    }
+
+    public String getIntensidade() {
 		return intensidade;
 	}
 
@@ -72,6 +77,26 @@ public abstract class Atividade {
     }
 
 	public abstract Integer calcularCaloriasQueimadas();
+
+    public Atividade(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
+
+        if (duracaoMinutos <=0){
+            throw new DuracaoMinutosInvalidException("Impossivel criar atividade com duracao invalida [<=0]");
+        }
+        List<String> listaIntensidade = new ArrayList<String>();
+        listaIntensidade.add("Baixa");
+        listaIntensidade.add("Alta");
+        listaIntensidade.add("Media");
+
+        if  (!listaIntensidade.contains(intensidade)) {
+            throw new IntensidadeInvalidException("Intensidade possui um valor designado invalido, favor selecionar um valor dentre a lista [Baixa, Media, Alta]");
+        }
+        this.descricao = descricao;
+        this.duracaoMinutos = duracaoMinutos;
+        this.intensidade = intensidade;
+        this.supervisionada = supervisionada;
+    }
+
 
     @Override
     public String toString() {

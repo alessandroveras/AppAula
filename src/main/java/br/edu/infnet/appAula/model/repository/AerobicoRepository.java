@@ -1,6 +1,6 @@
 package br.edu.infnet.appAula.model.repository;
 
-import br.edu.infnet.appAula.model.domain.Musculacao;
+import br.edu.infnet.appAula.model.domain.Aerobico;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MusculacaoRepository extends CrudRepository<Musculacao, Integer> {
+public interface AerobicoRepository extends CrudRepository<Aerobico, Integer> {
 
-    @Query("from Musculacao m where m.usuario.id = :userid ")
-    List<Musculacao> findAll(Integer userid, Sort by);
-    List<Musculacao> findAll(Sort by);
+    @Query("from Aerobico a where a.usuario.id = :userid ")
+    List<Aerobico> findAll(Integer userid, Sort by);
+    List<Aerobico> findAll(Sort by);
 }

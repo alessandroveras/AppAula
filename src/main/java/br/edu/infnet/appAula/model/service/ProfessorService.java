@@ -4,6 +4,7 @@ import br.edu.infnet.appAula.model.domain.Professor;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class ProfessorService {
 
     public List<Professor> obterLista(Usuario usuario) {
 
-        return (List<Professor>) professorRepository.findAll(usuario.getId());
+        return (List<Professor>) professorRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "nome"));
     }
 
     public void incluir(Professor professor) {

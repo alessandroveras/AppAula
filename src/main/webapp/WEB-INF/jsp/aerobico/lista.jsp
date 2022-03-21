@@ -29,9 +29,9 @@
         </div>
     </c:if>
 
-    <h2>Cadastramento de Atividades de Musculacao</h2>
+    <h2>Cadastramento de Atividades Aerobicas</h2>
 
-    <form action="/musculacao" method="get">
+    <form action="/aerobico" method="get">
         <button type="submit" class="btn btn-primary">Novo</button>
     </form>
 
@@ -39,7 +39,7 @@
 
     <c:if test="${not empty lista}">
 
-        <h2>Total de Atividades de Musculacao: ${lista.size()}</h2>
+        <h2>Total de Atividades Aerobicas: ${lista.size()}</h2>
 
         <table class="table table-striped">
             <thead>
@@ -49,27 +49,27 @@
                 <th>DuracaoMinutos</th>
                 <th>Intensidade</th>
                 <th>Supervisionada</th>
-                <th>GrupamentoMuscular</th>
-                <th>Aparelho</th>
-                <th>Carga</th>
+                <th>Equipamento</th>
+                <th>CoolDownTime</th>
+                <th>UsarCarga</th>
                 <th>CaloriasPorMinuto</th>
                 <th></th>
 
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="musculacao" items="${lista}">
+            <c:forEach var="aerobico" items="${lista}">
                 <tr>
-                    <td>${musculacao.id}</td>
-                    <td>${musculacao.descricao}</td>
-                    <td>${musculacao.duracaoMinutos}</td>
-                    <td>${musculacao.intensidade}</td>
-                    <td>${musculacao.supervisionada}</td>
-                    <td>${musculacao.grupamentoMuscular}</td>
-                    <td>${musculacao.aparelho}</td>
-                    <td>${musculacao.carga}</td>
-                    <td>${musculacao.caloriasPorMinuto}</td>
-                    <td><a href="/musculacao/${musculacao.id}/excluir">Excluir</a></td>
+                    <td>${aerobico.id}</td>
+                    <td>${aerobico.descricao}</td>
+                    <td>${aerobico.duracaoMinutos}</td>
+                    <td>${aerobico.intensidade}</td>
+                    <td>${aerobico.supervisionada}</td>
+                    <td>${aerobico.equipamento}</td>
+                    <td>${aerobico.coolDownMinutos}</td>
+                    <td>${aerobico.usarCarga}</td>
+                    <td>${aerobico.caloriasPorMinuto}</td>
+                    <td><a href="/aerobico/${aerobico.id}/excluir">Excluir</a></td>
                 </tr>
             </c:forEach>
 
@@ -78,7 +78,7 @@
     </c:if>
 
     <c:if test="${empty lista}">
-        <h2>Não existem atividades de musculacao cadastradas!!!</h2>
+        <h2>Não existem atividades aerobicas cadastradas!!!</h2>
     </c:if>
 
 </div>

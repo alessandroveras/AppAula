@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Table(name = "TMusculacao")
 public class Musculacao extends Atividade {
 
-    private String exercicio;
     private String grupamentoMuscular;
     private String aparelho;
     private Float carga;
@@ -24,13 +23,6 @@ public class Musculacao extends Atividade {
         super(duracaoMinutos, descricao, intensidade, supervisionada);
     }
 
-    public String getExercicio() {
-        return exercicio;
-    }
-
-    public void setExercicio(String exercicio) {
-        this.exercicio = exercicio;
-    }
 
     public String getGrupamentoMuscular() {
         return grupamentoMuscular;
@@ -75,7 +67,6 @@ public class Musculacao extends Atividade {
 
         sb.append(super.toString());
         sb.append(";");
-        sb.append(exercicio);
         sb.append(";");
         sb.append(grupamentoMuscular);
         sb.append(";");

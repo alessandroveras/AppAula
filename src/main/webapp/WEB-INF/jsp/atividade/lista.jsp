@@ -29,17 +29,13 @@
         </div>
     </c:if>
 
-    <h2>Cadastramento de Atividades de Musculacao</h2>
-
-    <form action="/musculacao" method="get">
-        <button type="submit" class="btn btn-primary">Novo</button>
-    </form>
+    <h2>Cadastramento de Atividades</h2>
 
     <hr>
 
     <c:if test="${not empty lista}">
 
-        <h2>Total de Atividades de Musculacao: ${lista.size()}</h2>
+        <h2>Total de Atividades: ${lista.size()}</h2>
 
         <table class="table table-striped">
             <thead>
@@ -49,27 +45,19 @@
                 <th>DuracaoMinutos</th>
                 <th>Intensidade</th>
                 <th>Supervisionada</th>
-                <th>GrupamentoMuscular</th>
-                <th>Aparelho</th>
-                <th>Carga</th>
-                <th>CaloriasPorMinuto</th>
                 <th></th>
 
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="musculacao" items="${lista}">
+            <c:forEach var="atividade" items="${lista}">
                 <tr>
-                    <td>${musculacao.id}</td>
-                    <td>${musculacao.descricao}</td>
-                    <td>${musculacao.duracaoMinutos}</td>
-                    <td>${musculacao.intensidade}</td>
-                    <td>${musculacao.supervisionada}</td>
-                    <td>${musculacao.grupamentoMuscular}</td>
-                    <td>${musculacao.aparelho}</td>
-                    <td>${musculacao.carga}</td>
-                    <td>${musculacao.caloriasPorMinuto}</td>
-                    <td><a href="/musculacao/${musculacao.id}/excluir">Excluir</a></td>
+                    <td>${atividade.id}</td>
+                    <td>${atividade.descricao}</td>
+                    <td>${atividade.duracaoMinutos}</td>
+                    <td>${atividade.intensidade}</td>
+                    <td>${atividade.supervisionada}</td>
+                    <td><a href="/atividade/${atividade.id}/excluir">Excluir</a></td>
                 </tr>
             </c:forEach>
 
@@ -78,7 +66,7 @@
     </c:if>
 
     <c:if test="${empty lista}">
-        <h2>Não existem atividades de musculacao cadastradas!!!</h2>
+        <h2>Não existem atividades cadastradas!!!</h2>
     </c:if>
 
 </div>

@@ -28,9 +28,9 @@
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/usuarios">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="/professores">Professor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Atividade</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/atividades">Atividade</a></li>
                     <li class="nav-item"><a class="nav-link" href="/musculacoes">Musculacao</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Aerobico</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aerobicos">Aerobico</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Alongamento</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Aula</a></li>
                 </c:if>

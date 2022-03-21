@@ -3,6 +3,7 @@ package br.edu.infnet.appAula.model.service;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class UsuarioService {
 
     public List<Usuario> obterLista() {
 
-        return (List<Usuario>) usuarioRepository.findAll();
+        return (List<Usuario>) usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "email"));
     }
 
     public void incluir(Usuario usuario) {

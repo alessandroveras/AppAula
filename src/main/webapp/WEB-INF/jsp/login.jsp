@@ -32,7 +32,7 @@
         <div class="mb-3 mt-3">
             <label>E-mail:</label>
             <input type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email"
-                   value="administrador@mygym.com">
+                   value="usuario1@mygym.com">
         </div>
 
         <div class="mb-3">

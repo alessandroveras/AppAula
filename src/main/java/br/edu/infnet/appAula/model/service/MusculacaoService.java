@@ -5,6 +5,7 @@ import br.edu.infnet.appAula.model.domain.Musculacao;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.repository.MusculacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public class MusculacaoService {
 
     public List<Musculacao> obterLista() {
 
-        return (List<Musculacao>) musculacaoRepository.findAll();
+        return (List<Musculacao>) musculacaoRepository.findAll(Sort.by(Sort.Direction.ASC, "descricao"));
     }
 
-//    public List<Musculacao> obterLista(Usuario usuario) {
-//
-//        return (List<Musculacao>) musculacaoRepository.findAll(usuario.getId());
-//    }
+    public List<Musculacao> obterLista(Usuario usuario) {
+
+        return (List<Musculacao>) musculacaoRepository.findAll(usuario.getId(),Sort.by(Sort.Direction.ASC, "descricao"));
+    }
 
     public void incluir(Musculacao musculacao) {
 

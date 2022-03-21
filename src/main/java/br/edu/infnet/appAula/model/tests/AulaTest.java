@@ -17,7 +17,6 @@ public class AulaTest {
 
         try {
             Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true);
-            musculacao.setExercicio("Triceps testa");
             musculacao.setGrupamentoMuscular("triceps");
             musculacao.setAparelho("Alter");
             musculacao.setCarga(20.0F);

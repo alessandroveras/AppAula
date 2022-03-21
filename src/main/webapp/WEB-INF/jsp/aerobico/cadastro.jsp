@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Cadastro de Atividades de Musculacao</title>
+    <title>Cadastro de Atividades Aerobicas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,23 +31,23 @@
 
     <h2>Cadastramento de Atividades de Musculacão</h2>
 
-    <form action="/musculacao/incluir" method="post">
+    <form action="/aerobico/incluir" method="post">
         <div class="mb-3 mt-3">
             <label>Descricao:</label>
             <input type="text" class="form-control" placeholder="Entre com o nome do exercicio:" name="descricao"
-                   value="Supino Reto">
+                   value="Corrida">
         </div>
         <div class="mb-3 mt-3">
             <label>DuracaoMinutos:</label>
             <input type="number" class="form-control" placeholder="Entre com a duracao do exercicio:"
                    name="duracaoMinutos"
-                   value=7>
+                   value=40>
         </div>
         <div class="form-group">
             <label>Intensidade:</label>
             <select class="form-control" name="intensidade">
                 <option>Baixa</option>
-                <option>Media</option>
+                <option selected>Media</option>
                 <option>Alta</option>
             </select>
         </div>
@@ -57,28 +57,27 @@
             <input type="radio" name="supervisionada">Sim
         </div>
         <div class="mb-3 mt-3">
-            <label>GrupamentoMuscular:</label>
-            <input type="text" class="form-control" placeholder="Entre com o grupamento muscular:"
-                   name="grupamentoMuscular"
-                   value="Peitoral">
+            <label>Equipamento:</label>
+            <input type="text" class="form-control" placeholder="Entre com o equipamentop:"
+                   name="equipamento"
+                   value="Esteira">
         </div>
         <div class="mb-3 mt-3">
-            <label>Aparelho:</label>
-            <input type="text" class="form-control" placeholder="Entre com o aparelho:"
-                   name="aparelho"
-                   value="Barra">
+            <label>Periodo de CoolDown:</label>
+            <input type="number" class="form-control" placeholder="Entre com o tempo de coolDown:"
+                   name="coolDownMinutos"
+                   value=5>
         </div>
         <div class="mb-3 mt-3">
-            <label>Carga:</label>
-            <input type="number" class="form-control" placeholder="Entre com a carga:"
-                   name="carga"
-                   value=20>
+            <label>Usar Carga:</label>
+            <input type="radio" name="usarCarga" checked>Nao
+            <input type="radio" name="usarCarga">Sim
         </div>
         <div class="mb-3 mt-3">
             <label>Calorias por minuto:</label>
             <input type="number" class="form-control" placeholder="Entre com o valor de calorias por minuto:"
                    name="caloriasPorMinuto"
-                   value=2>
+                   value=7>
         </div>
 
         <button type="submit" class="btn btn-primary">Cadastar</button>

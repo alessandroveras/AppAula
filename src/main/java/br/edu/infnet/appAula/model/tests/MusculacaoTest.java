@@ -13,7 +13,6 @@ public class MusculacaoTest {
         //TEST 1 VALID
         try {
             Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true);
-            musculacao.setExercicio("Triceps testa");
             musculacao.setGrupamentoMuscular("triceps");
             musculacao.setAparelho("Alter");
             musculacao.setCarga(20.0F);
@@ -28,7 +27,6 @@ public class MusculacaoTest {
         //TEST 2 - EXCEPTION CaloriasPorMinutoInvalid
         try {
             Musculacao musculacao = new Musculacao(45, "Musculacao", "Media", true);
-            musculacao.setExercicio("Triceps testa");
             musculacao.setGrupamentoMuscular("triceps");
             musculacao.setAparelho("Alter");
             musculacao.setCarga(20.0F);
@@ -43,7 +41,6 @@ public class MusculacaoTest {
         //TEST 3 - EXCEPTION CaloriasPorMinutoInvalid
         try {
             Musculacao musculacao = new Musculacao(-1, "Musculacao", "Media", true);
-            musculacao.setExercicio("Triceps testa");
             musculacao.setGrupamentoMuscular("triceps");
             musculacao.setAparelho("Alter");
             musculacao.setCarga(20.0F);
@@ -58,7 +55,6 @@ public class MusculacaoTest {
         //TEST 4 - EXCEPTION IntesidadeInvalidExceptions
         try {
             Musculacao musculacao = new Musculacao(45, "Musculacao", "Null", true);
-            musculacao.setExercicio("Triceps testa");
             musculacao.setGrupamentoMuscular("triceps");
             musculacao.setAparelho("Alter");
             musculacao.setCarga(20.0F);

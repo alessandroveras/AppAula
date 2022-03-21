@@ -29,7 +29,7 @@ public class MusculacaoController {
         if (usuario.isAdmin() == true) {
             model.addAttribute("lista", musculacaoService.obterLista());
         } else {
-            model.addAttribute("lista", musculacaoService.obterLista());
+            model.addAttribute("lista", musculacaoService.obterLista(usuario));
         }
 
         return "musculacao/lista";
@@ -38,11 +38,11 @@ public class MusculacaoController {
     @PostMapping(value = "/musculacao/incluir")
     public String incluir(Model model, Musculacao musculacao, @SessionAttribute("user") Usuario usuario) {
 
-//        musculacao.setUsuario(usuario);
+        musculacao.setUsuario(usuario);
 
         musculacaoService.incluir(musculacao);
 
-        model.addAttribute("mensagem", "O musculacao " + musculacao.getDescricao() + " foi cadastrado com sucesso.");
+        model.addAttribute("mensagem", "A atividade de musculacao " + musculacao.getDescricao() + " foi cadastrado com sucesso.");
 
         return telaLista(model, usuario);
     }
