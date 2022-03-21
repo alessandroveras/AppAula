@@ -16,6 +16,9 @@ public class Usuario {
     private String senha;
     private Boolean admin;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idendereco")
+    private Endereco endereco;
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "idUsuario")
@@ -75,6 +78,14 @@ public class Usuario {
 
     public void setProfessores(List<Professor> professores) {
         this.professores = professores;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override

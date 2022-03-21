@@ -13,9 +13,22 @@ public class Professor {
     private String nome;
     private String email;
     private String cpf;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idendereco")
+    private Endereco endereco;
+
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
     public Usuario getUsuario() {
         return usuario;

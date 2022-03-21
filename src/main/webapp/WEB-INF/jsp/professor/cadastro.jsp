@@ -40,6 +40,8 @@
                    value="101.002.497-06">
         </div>
 
+        <c:import url="/WEB-INF/jsp/endereco.jsp"/>
+
         <button type="submit" class="btn btn-primary">Cadastar</button>
     </form>
 </div>

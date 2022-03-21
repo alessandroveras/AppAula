@@ -1,5 +1,6 @@
  package br.edu.infnet.appAula.controller;
 
+import br.edu.infnet.appAula.model.domain.Endereco;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,9 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "/usuario/incluir")
-    public String incluir(Model model, Usuario usuario) {
+    public String incluir(Model model, Usuario usuario, Endereco endereco) {
+
+        usuario.setEndereco(endereco);
 
         usuarioService.incluir(usuario);
 

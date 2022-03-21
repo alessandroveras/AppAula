@@ -29,24 +29,34 @@
         </div>
     </c:if>
 
+    <form action="/cep" class="form-inline" method="post">
+        <div class="mb-3 mt-3">
+            <label>Busca por CEP:</label>
+            <input type="text" class="form-control" placeholder="Entre com o cep" name="cep" value="24415530">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
     <h2>Cadastramento de Usuários</h2>
 
     <form action="/usuario/incluir" method="post">
         <div class="mb-3 mt-3">
             <label>Nome:</label>
             <input type="text" class="form-control" placeholder="Entre com seu nome:" name="nome"
-                   value="Alessandro Veras">
+                   value="user2">
         </div>
         <div class="mb-3 mt-3">
             <label>Email:</label>
             <input type="email" class="form-control" placeholder="Entre com seu e-mail:" name="email"
-                   value="alessandro@bodytech.com">
+                   value="user2@mygym.com">
         </div>
         <div class="mb-3 mt-3">
             <label>Senha:</label>
             <input type="password" class="form-control" placeholder="Entre com a sua senha:" name="senha"
                    value="1234">
         </div>
+
+              <c:import url="/WEB-INF/jsp/endereco.jsp"/>
 
         <button type="submit" class="btn btn-primary">Cadastar</button>
     </form>

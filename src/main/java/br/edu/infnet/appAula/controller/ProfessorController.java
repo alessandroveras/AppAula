@@ -1,5 +1,6 @@
 package br.edu.infnet.appAula.controller;
 
+import br.edu.infnet.appAula.model.domain.Endereco;
 import br.edu.infnet.appAula.model.domain.Professor;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.service.ProfessorService;
@@ -41,9 +42,11 @@ public class ProfessorController {
     }
 
     @PostMapping(value = "/professor/incluir")
-    public String incluir(Model model, Professor professor, @SessionAttribute("user") Usuario usuario) {
+    public String incluir(Model model, Professor professor, Endereco endereco, @SessionAttribute("user") Usuario usuario) {
 
+        professor.setEndereco(endereco);
         professor.setUsuario(usuario);
+
         professorService.incluir(professor);
 
         model.addAttribute("mensagem", "O professor " + professor.getNome() + " foi cadastrado com sucesso.");
