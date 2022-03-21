@@ -17,15 +17,37 @@ public abstract class Atividade {
     private Integer id;
     private String descricao;
     private Integer duracaoMinutos;
-	private String intensidade;
+    private String intensidade;
     private Boolean supervisionada;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
+    @ManyToMany(mappedBy = "atividades")
+    private List<Aula> aulas;
+
     public Atividade() {
 
+    }
+
+    public Atividade(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
+
+        if (duracaoMinutos <= 0) {
+            throw new DuracaoMinutosInvalidException("Impossivel criar atividade com duracao invalida [<=0]");
+        }
+        List<String> listaIntensidade = new ArrayList<String>();
+        listaIntensidade.add("Baixa");
+        listaIntensidade.add("Alta");
+        listaIntensidade.add("Media");
+
+        if (!listaIntensidade.contains(intensidade)) {
+            throw new IntensidadeInvalidException("Intensidade possui um valor designado invalido, favor selecionar um valor dentre a lista [Baixa, Media, Alta]");
+        }
+        this.descricao = descricao;
+        this.duracaoMinutos = duracaoMinutos;
+        this.intensidade = intensidade;
+        this.supervisionada = supervisionada;
     }
 
     public Usuario getUsuario() {
@@ -60,43 +82,31 @@ public abstract class Atividade {
         this.descricao = descricao;
     }
 
+    public String getIntensidade() {
+        return intensidade;
+    }
+
     public void setIntensidade(String intensidade) {
         this.intensidade = intensidade;
+    }
+
+    public Boolean getSupervisionada() {
+        return supervisionada;
     }
 
     public void setSupervisionada(Boolean supervisionada) {
         this.supervisionada = supervisionada;
     }
 
-    public String getIntensidade() {
-		return intensidade;
-	}
-
-	public Boolean getSupervisionada() {
-        return supervisionada;
+    public List<Aula> getAulas() {
+        return aulas;
     }
 
-	public abstract Integer calcularCaloriasQueimadas();
-
-    public Atividade(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
-
-        if (duracaoMinutos <=0){
-            throw new DuracaoMinutosInvalidException("Impossivel criar atividade com duracao invalida [<=0]");
-        }
-        List<String> listaIntensidade = new ArrayList<String>();
-        listaIntensidade.add("Baixa");
-        listaIntensidade.add("Alta");
-        listaIntensidade.add("Media");
-
-        if  (!listaIntensidade.contains(intensidade)) {
-            throw new IntensidadeInvalidException("Intensidade possui um valor designado invalido, favor selecionar um valor dentre a lista [Baixa, Media, Alta]");
-        }
-        this.descricao = descricao;
-        this.duracaoMinutos = duracaoMinutos;
-        this.intensidade = intensidade;
-        this.supervisionada = supervisionada;
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
     }
 
+    public abstract Integer calcularCaloriasQueimadas();
 
     @Override
     public String toString() {
@@ -108,10 +118,10 @@ public abstract class Atividade {
         sb.append(descricao);
         sb.append(";");
         sb.append(intensidade);
-		sb.append(";");
-		sb.append(supervisionada);
-		sb.append(";");
-		sb.append(this.calcularCaloriasQueimadas());
+        sb.append(";");
+        sb.append(supervisionada);
+        sb.append(";");
+        sb.append(this.calcularCaloriasQueimadas());
         sb.append(";");
 
         return sb.toString();

@@ -52,9 +52,13 @@ public class MusculacaoController {
 
         Musculacao musculacao = musculacaoService.obterPorId(id);
 
-        musculacaoService.excluir(id);
+        try {
+            musculacaoService.excluir(id);
+            model.addAttribute("mensagem", "O musculacao " + musculacao.getDescricao() + " foi removido com sucesso.");
+        } catch (Exception e) {
+            model.addAttribute("mensagem", "Existem aulas associadas a atividade " + musculacao.getDescricao() + "!! Impossível excluir.");
+        }
 
-        model.addAttribute("mensagem", "O musculacao " + musculacao.getDescricao() + " foi removido com sucesso.");
 
         return telaLista(model, usuario);
 

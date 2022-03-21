@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/app">
             <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png"
                  alt="AppAula" style="width:40px;" class="rounded-pill">
         </a>
@@ -25,14 +25,14 @@
             <ul class="navbar-nav me-auto">
 
                 <c:if test="${not empty user}">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/usuarios">Usuario</a></li>
                     <li class="nav-item"><a class="nav-link" href="/professores">Professor</a></li>
                     <li class="nav-item"><a class="nav-link" href="/atividades">Atividade</a></li>
                     <li class="nav-item"><a class="nav-link" href="/musculacoes">Musculacao</a></li>
                     <li class="nav-item"><a class="nav-link" href="/aerobicos">Aerobico</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Alongamento</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Aula</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aulas">Aula</a></li>
                 </c:if>
             </ul>
             <ul class="navbar-nav navbar-right nav-flex-icons">

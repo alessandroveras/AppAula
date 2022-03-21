@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 @Controller
 public class ProfessorController {
 
@@ -59,9 +54,12 @@ public class ProfessorController {
 
         Professor professor = professorService.obterPorId(id);
 
-        professorService.excluir(id);
-
-        model.addAttribute("mensagem", "O professor " + professor.getNome() + " foi removido com sucesso.");
+        try {
+            professorService.excluir(id);
+            model.addAttribute("mensagem", "O professor " + professor.getNome() + " foi removido com sucesso.");
+        } catch (Exception e) {
+            model.addAttribute("mensagem", "Existem aulas associadas ao professor " + professor.getNome() + "!! Impossível excluir.");
+        }
 
         return telaLista(model, usuario);
 

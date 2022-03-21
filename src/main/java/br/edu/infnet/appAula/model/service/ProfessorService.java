@@ -16,30 +16,29 @@ public class ProfessorService {
     private ProfessorRepository professorRepository;
 
     public List<Professor> obterLista() {
-
         return (List<Professor>) professorRepository.findAll();
     }
 
     public List<Professor> obterLista(Usuario usuario) {
-
         return (List<Professor>) professorRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "nome"));
     }
 
     public void incluir(Professor professor) {
-
         professorRepository.save(professor);
 
     }
 
     public void excluir(Integer id) {
-
         professorRepository.deleteById(id);
 
     }
 
     public Professor obterPorId(Integer id) {
-
         return professorRepository.findById(id).orElse(null);
+    }
+
+    public long obterQtde() {
+        return professorRepository.count();
     }
 
 

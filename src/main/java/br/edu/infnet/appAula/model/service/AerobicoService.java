@@ -16,31 +16,27 @@ public class AerobicoService {
     private AerobicoRepository aerobicoRepository;
 
     public List<Aerobico> obterLista() {
-
         return (List<Aerobico>) aerobicoRepository.findAll(Sort.by(Sort.Direction.ASC, "descricao"));
     }
 
     public List<Aerobico> obterLista(Usuario usuario) {
-
-        return (List<Aerobico>) aerobicoRepository.findAll(usuario.getId(),Sort.by(Sort.Direction.ASC, "descricao"));
+        return (List<Aerobico>) aerobicoRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "descricao"));
     }
 
     public void incluir(Aerobico aerobico) {
-
         aerobicoRepository.save(aerobico);
-
     }
 
     public void excluir(Integer id) {
-
         aerobicoRepository.deleteById(id);
-
     }
 
     public Aerobico obterPorId(Integer id) {
-
         return aerobicoRepository.findById(id).orElse(null);
     }
 
+    public long obterQtde() {
+        return aerobicoRepository.count();
+    }
 
 }

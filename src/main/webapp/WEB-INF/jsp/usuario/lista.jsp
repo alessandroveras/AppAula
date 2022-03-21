@@ -36,7 +36,10 @@
                 <th>Id</th>
                 <th>Nome</th>
                 <th>E-mail</th>
+                <th>Endereco</th>
                 <th>Professores</th>
+                <th>Atividades</th>
+                <th>Aulas</th>
                 <c:if test="${user.admin}">
                     <th></th>
                 </c:if>
@@ -49,12 +52,17 @@
                     <td>${usuario.id}</td>
                     <td>${usuario.nome}</td>
                     <td>${usuario.email}</td>
+                    <td>${usuario.endereco.cep}</td>
                     <td>${usuario.professores.size()}</td>
+                    <td>${usuario.atividades.size()}</td>
+                    <td>${usuario.aulas.size()}</td>
 
                     <c:if test="${user.admin}">
-                        <c:if test="${user.id != usuario.id}">
-                            <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${user.id != usuario.id}">
+                                <td><a href="/usuario/${usuario.id}/excluir">Excluir</a></td>
+                            </c:when>
+                        </c:choose>
                         <c:if test="${user.id == usuario.id}">
                             <td>-</td>
                         </c:if>

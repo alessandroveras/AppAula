@@ -52,9 +52,12 @@ public class AerobicoController {
 
         Aerobico aerobico = aerobicoService.obterPorId(id);
 
-        aerobicoService.excluir(id);
-
-        model.addAttribute("mensagem", "A atividade aerobica " + aerobico.getDescricao() + " foi removida com sucesso.");
+        try {
+            aerobicoService.excluir(id);
+            model.addAttribute("mensagem", "A atividade aerobica " + aerobico.getDescricao() + " foi removida com sucesso.");
+        } catch (Exception e) {
+            model.addAttribute("mensagem", "Existem aulas associadas a atividade " + aerobico.getDescricao() + "!! Impossível excluir.");
+        }
 
         return telaLista(model, usuario);
 

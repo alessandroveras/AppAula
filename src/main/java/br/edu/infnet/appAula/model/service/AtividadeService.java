@@ -17,19 +17,19 @@ public class AtividadeService {
 
 
     public List<Atividade> obterLista(Usuario usuario) {
-
         return (List<Atividade>) atividadeRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "descricao"));
     }
 
     public void excluir(Integer id) {
-
         atividadeRepository.deleteById(id);
     }
 
     public Atividade obterPorId(Integer id) {
-
         return atividadeRepository.findById(id).orElse(null);
     }
 
+    public long obterQtde() {
+        return atividadeRepository.count();
+    }
 
 }

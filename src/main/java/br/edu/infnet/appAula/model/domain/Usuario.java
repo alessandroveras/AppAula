@@ -28,16 +28,20 @@ public class Usuario {
     @JoinColumn(name = "idUsuario")
     private List<Atividade> atividades;
 
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @JoinColumn(name = "idUsuario")
+    private List<Aula> aulas;
+
+    public Usuario() {
+        this.admin = false;
+    }
+
     public List<Atividade> getAtividades() {
         return atividades;
     }
 
     public void setAtividades(List<Atividade> atividades) {
         this.atividades = atividades;
-    }
-
-    public Usuario() {
-        this.admin = false;
     }
 
     public Integer getId() {
@@ -98,6 +102,14 @@ public class Usuario {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public List<Aula> getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
     }
 
     @Override
