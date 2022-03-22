@@ -22,18 +22,6 @@ public class Professor {
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
     public Professor() {
     }
 
@@ -73,6 +61,18 @@ public class Professor {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public void setUsuario(Usuario usuario) {

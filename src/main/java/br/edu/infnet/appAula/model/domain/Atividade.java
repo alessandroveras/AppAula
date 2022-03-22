@@ -15,6 +15,7 @@ public abstract class Atividade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String descricao;
     private Integer duracaoMinutos;
     private String intensidade;

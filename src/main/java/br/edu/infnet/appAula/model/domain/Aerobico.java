@@ -16,12 +16,13 @@ public class Aerobico extends Atividade {
     private Boolean usarCarga;
     private Integer caloriasPorMinuto;
 
-    public Aerobico(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
-        super(duracaoMinutos, descricao, intensidade, supervisionada);
-    }
 
     public Aerobico() {
 
+    }
+
+    public Aerobico(Integer duracaoMinutos, String descricao, String intensidade, Boolean supervisionada) throws DuracaoMinutosInvalidException, IntensidadeInvalidException {
+        super(duracaoMinutos, descricao, intensidade, supervisionada);
     }
 
     public String getEquipamento() {
