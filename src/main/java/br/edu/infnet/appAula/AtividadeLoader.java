@@ -2,6 +2,7 @@ package br.edu.infnet.appAula;
 
 import br.edu.infnet.appAula.model.domain.Aerobico;
 import br.edu.infnet.appAula.model.domain.Musculacao;
+import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.service.AerobicoService;
 import br.edu.infnet.appAula.model.service.MusculacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,15 @@ public class AtividadeLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        Usuario usuario = new Usuario();
+        usuario.setId(2);
+
         Musculacao musculacao = new Musculacao(5, "Triceps Testa", "Media", true);
         musculacao.setGrupamentoMuscular("Triceps");
         musculacao.setAparelho("Barra");
         musculacao.setCarga(20.0F);
         musculacao.setCaloriasPorMinuto(5);
+        musculacao.setUsuario(usuario);
         musculacaoService.incluir(musculacao);
 
         Aerobico aerobico = new Aerobico(30, "Escada", "Alta", false);
@@ -34,6 +39,7 @@ public class AtividadeLoader implements ApplicationRunner {
         aerobico.setCoolDownMinutos(7);
         aerobico.setUsarCarga(false);
         aerobico.setCaloriasPorMinuto(15);
+        aerobico.setUsuario(usuario);
         aerobicoService.incluir(aerobico);
 
     }
