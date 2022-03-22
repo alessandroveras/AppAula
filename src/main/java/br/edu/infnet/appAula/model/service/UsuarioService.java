@@ -1,9 +1,9 @@
 package br.edu.infnet.appAula.model.service;
 
+import br.edu.infnet.appAula.clients.IUsuarioClient;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,20 +14,19 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario validar(String email, String senha) {
-        return usuarioRepository.autenticacao(email, senha);
-    }
+    @Autowired
+    private IUsuarioClient usuarioClient;
 
     public List<Usuario> obterLista() {
-        return (List<Usuario>) usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "email"));
+        return usuarioClient.obterLista();
     }
 
     public void incluir(Usuario usuario) {
-        usuarioRepository.save(usuario);
+        usuarioClient.incluir(usuario);
     }
 
     public void excluir(Integer id) {
-        usuarioRepository.deleteById(id);
+        usuarioClient.excluir(id);
 
     }
 
@@ -37,6 +36,10 @@ public class UsuarioService {
 
     public long obterQtde() {
         return usuarioRepository.count();
+    }
+
+    public Usuario validar(String email, String senha) {
+        return usuarioRepository.autenticacao(email, senha);
     }
 
 }

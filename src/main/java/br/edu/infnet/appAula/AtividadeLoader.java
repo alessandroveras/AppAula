@@ -11,7 +11,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(3)
+@Order(4)
 public class AtividadeLoader implements ApplicationRunner {
 
     @Autowired

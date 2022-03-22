@@ -10,7 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(2)
+@Order(3)
 public class ProfessorLoader implements ApplicationRunner {
 
     @Autowired
@@ -20,11 +20,11 @@ public class ProfessorLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         Usuario usuario = new Usuario();
-        usuario.setId(1);
+        usuario.setId(2);
 
         Professor professor = new Professor();
-        professor.setEmail("alessandro@bodytech.com");
-        professor.setNome("Alessandro Personal");
+        professor.setEmail("professor1@bodytech.com");
+        professor.setNome("Professor 1");
         professor.setCpf("111.111.111-11");
         professor.setUsuario(usuario);
 
