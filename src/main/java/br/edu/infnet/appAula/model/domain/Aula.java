@@ -48,7 +48,6 @@ public class Aula {
         return data;
     }
 
-
     public void setData(LocalDateTime data) {
         this.data = data;
     }

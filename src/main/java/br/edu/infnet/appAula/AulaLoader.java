@@ -1,23 +1,24 @@
 package br.edu.infnet.appAula;
 
-import br.edu.infnet.appAula.model.domain.Endereco;
-import br.edu.infnet.appAula.model.domain.Professor;
-import br.edu.infnet.appAula.model.domain.Usuario;
+import br.edu.infnet.appAula.model.domain.*;
+import br.edu.infnet.appAula.model.service.AerobicoService;
+import br.edu.infnet.appAula.model.service.AulaService;
 import br.edu.infnet.appAula.model.service.EnderecoService;
-import br.edu.infnet.appAula.model.service.ProfessorService;
+import br.edu.infnet.appAula.model.service.MusculacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
-@Order(2)
-public class ProfessorLoader implements ApplicationRunner {
+@Order(3)
+public class AulaLoader implements ApplicationRunner {
 
     @Autowired
-    private ProfessorService professorService;
-
+    private AulaService aulaService;
     @Autowired
     private EnderecoService enderecoService;
 
@@ -38,6 +39,11 @@ public class ProfessorLoader implements ApplicationRunner {
         professor.setUsuario(usuario);
         professor.setEndereco(endereco);
 
-        professorService.incluir(professor);
+        Aula aula = new Aula();
+        aula.setDuracao(60);
+        aula.setData(LocalDateTime.now());
+        aula.setProfessor(professor);
+
+//        aulaService.incluir(aula);
     }
 }

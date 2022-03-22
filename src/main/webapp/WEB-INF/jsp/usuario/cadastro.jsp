@@ -55,7 +55,7 @@
                    value="1234">
         </div>
 
-              <c:import url="/WEB-INF/jsp/endereco.jsp"/>
+        <c:import url="/WEB-INF/jsp/endereco.jsp"/>
 
         <button type="submit" class="btn btn-primary">Cadastar</button>
     </form>
