@@ -9,7 +9,7 @@ public class AerobicoTest {
 
     public static void main(String[] args) {
 
-		//TEST valid
+        //TEST valid
         try {
             Aerobico aerobico = new Aerobico(30, "Aerobico", "Media", false);
             aerobico.setEquipamento("Esteira Ergometrica");
@@ -17,53 +17,53 @@ public class AerobicoTest {
             aerobico.setUsarCarga(false);
             aerobico.setCaloriasPorMinuto(10);
 
-			System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
+            System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
 
-		} catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+        } catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
             System.out.println(e.getMessage());
         }
 
-		//EXCEPTION CaloriasPorMinutoInvalid
-		try {
-			Aerobico aerobico = new Aerobico(30, "Aerobico", "Media", false);
-			aerobico.setEquipamento("Esteira Ergometrica");
-			aerobico.setCoolDownMinutos(5);
-			aerobico.setUsarCarga(false);
-			aerobico.setCaloriasPorMinuto(0);
+        //EXCEPTION CaloriasPorMinutoInvalid
+        try {
+            Aerobico aerobico = new Aerobico(30, "Aerobico", "Media", false);
+            aerobico.setEquipamento("Esteira Ergometrica");
+            aerobico.setCoolDownMinutos(5);
+            aerobico.setUsarCarga(false);
+            aerobico.setCaloriasPorMinuto(0);
 
-			System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
+            System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
 
-		} catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
-			System.out.println(e.getMessage());
-		}
+        } catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+            System.out.println(e.getMessage());
+        }
 
-		//EXCEPTION DuracaoMinutosInvalidException
-		try {
-			Aerobico aerobico = new Aerobico(-1, "Aerobico", "Media", false);
-			aerobico.setEquipamento("Esteira Ergometrica");
-			aerobico.setCoolDownMinutos(5);
-			aerobico.setUsarCarga(false);
-			aerobico.setCaloriasPorMinuto(0);
+        //EXCEPTION DuracaoMinutosInvalidException
+        try {
+            Aerobico aerobico = new Aerobico(-1, "Aerobico", "Media", false);
+            aerobico.setEquipamento("Esteira Ergometrica");
+            aerobico.setCoolDownMinutos(5);
+            aerobico.setUsarCarga(false);
+            aerobico.setCaloriasPorMinuto(0);
 
-			System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
+            System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
 
-		} catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
-			System.out.println(e.getMessage());
-		}
+        } catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+            System.out.println(e.getMessage());
+        }
 
-		//EXCEPTION IntensidadeInvalidException
-		try {
-			Aerobico aerobico = new Aerobico(30, "Aerobico", "Null", false);
-			aerobico.setEquipamento("Esteira Ergometrica");
-			aerobico.setCoolDownMinutos(5);
-			aerobico.setUsarCarga(false);
-			aerobico.setCaloriasPorMinuto(0);
+        //EXCEPTION IntensidadeInvalidException
+        try {
+            Aerobico aerobico = new Aerobico(30, "Aerobico", "Null", false);
+            aerobico.setEquipamento("Esteira Ergometrica");
+            aerobico.setCoolDownMinutos(5);
+            aerobico.setUsarCarga(false);
+            aerobico.setCaloriasPorMinuto(0);
 
-			System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
+            System.out.println("Calorias queimadas: " + aerobico.calcularCaloriasQueimadas());
 
-		} catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
-			System.out.println(e.getMessage());
-		}
+        } catch (CaloriasPorMinutoInvalidException | DuracaoMinutosInvalidException | IntensidadeInvalidException e) {
+            System.out.println(e.getMessage());
+        }
 
 
     }

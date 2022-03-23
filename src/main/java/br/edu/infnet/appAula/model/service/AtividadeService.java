@@ -1,10 +1,9 @@
 package br.edu.infnet.appAula.model.service;
 
+import br.edu.infnet.appAula.clients.IAtividadeClient;
 import br.edu.infnet.appAula.model.domain.Atividade;
 import br.edu.infnet.appAula.model.domain.Usuario;
-import br.edu.infnet.appAula.model.repository.AtividadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,23 +12,26 @@ import java.util.List;
 public class AtividadeService {
 
     @Autowired
-    private AtividadeRepository atividadeRepository;
+    private IAtividadeClient atividadeClient;
 
+    public List<Atividade> obterLista() {
+        return (List<Atividade>) atividadeClient.obterLista();
+    }
 
     public List<Atividade> obterLista(Usuario usuario) {
-        return (List<Atividade>) atividadeRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "descricao"));
+        return (List<Atividade>) atividadeClient.obterLista(usuario.getId());
     }
 
     public void excluir(Integer id) {
-        atividadeRepository.deleteById(id);
+        atividadeClient.excluir(id);
     }
 
     public Atividade obterPorId(Integer id) {
-        return atividadeRepository.findById(id).orElse(null);
+        return atividadeClient.obterPorId(id);
     }
 
     public long obterQtde() {
-        return atividadeRepository.count();
+        return atividadeClient.obterQtde();
     }
 
 }

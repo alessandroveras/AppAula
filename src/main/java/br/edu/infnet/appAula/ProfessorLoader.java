@@ -24,20 +24,24 @@ public class ProfessorLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Usuario usuario = new Usuario();
-        usuario.setId(2);
+        Long qtdeProfessores = professorService.obterQtde();
 
-        Endereco endereco = new Endereco();
-        endereco = enderecoService.obterPorCep("22770102");
-        endereco.setComplemento("AP");
+        if (qtdeProfessores == 0) {
+            Usuario usuario = new Usuario();
+            usuario.setId(2);
 
-        Professor professor = new Professor();
-        professor.setEmail("professor1@bodytech.com");
-        professor.setNome("Professor1");
-        professor.setCpf("111.111.111-11");
-        professor.setUsuario(usuario);
-        professor.setEndereco(endereco);
+            Endereco endereco = new Endereco();
+            endereco = enderecoService.obterPorCep("22770102");
+            endereco.setComplemento("AP");
 
-        professorService.incluir(professor);
+            Professor professor = new Professor();
+            professor.setEmail("professor1@bodytech.com");
+            professor.setNome("Professor1");
+            professor.setCpf("111.111.111-11");
+            professor.setUsuario(usuario);
+            professor.setEndereco(endereco);
+
+            professorService.incluir(professor);
+        }
     }
 }

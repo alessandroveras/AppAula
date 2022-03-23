@@ -4,10 +4,6 @@ import br.edu.infnet.appAula.exceptions.CaloriasPorMinutoInvalidException;
 import br.edu.infnet.appAula.exceptions.DuracaoMinutosInvalidException;
 import br.edu.infnet.appAula.exceptions.IntensidadeInvalidException;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "TMusculacao")
 public class Musculacao extends Atividade {
 
     private String grupamentoMuscular;

@@ -1,10 +1,9 @@
 package br.edu.infnet.appAula.model.service;
 
+import br.edu.infnet.appAula.clients.IProfessorClient;
 import br.edu.infnet.appAula.model.domain.Professor;
 import br.edu.infnet.appAula.model.domain.Usuario;
-import br.edu.infnet.appAula.model.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,32 +12,30 @@ import java.util.List;
 public class ProfessorService {
 
     @Autowired
-    private ProfessorRepository professorRepository;
+    private IProfessorClient professorClient;
 
     public List<Professor> obterLista() {
-        return (List<Professor>) professorRepository.findAll();
+        return (List<Professor>) professorClient.obterLista();
     }
 
     public List<Professor> obterLista(Usuario usuario) {
-        return (List<Professor>) professorRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "nome"));
+        return (List<Professor>) professorClient.obterLista(usuario.getId());
     }
 
     public void incluir(Professor professor) {
-        professorRepository.save(professor);
-
+        professorClient.incluir(professor);
     }
 
     public void excluir(Integer id) {
-        professorRepository.deleteById(id);
-
+        professorClient.excluir(id);
     }
 
     public Professor obterPorId(Integer id) {
-        return professorRepository.findById(id).orElse(null);
+        return professorClient.obterPorId(id);
     }
 
     public long obterQtde() {
-        return professorRepository.count();
+        return professorClient.obterQtde();
     }
 
 

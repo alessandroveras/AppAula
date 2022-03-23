@@ -2,17 +2,12 @@ package br.edu.infnet.appAula.model.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@Entity
-@Table(name = "TAula")
 public class Aula {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -20,15 +15,10 @@ public class Aula {
 
     private Integer duracao;
 
-    @OneToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "idProfessor")
     private Professor professor;
 
-    @ManyToMany(cascade = CascadeType.DETACH)
     private List<Atividade> atividades;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     public Aula() {

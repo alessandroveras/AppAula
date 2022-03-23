@@ -23,25 +23,28 @@ public class UsuarioLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Usuario admin = new Usuario();
-        admin.setEmail("admin@mygym.com");
-        admin.setNome("admin");
-        admin.setSenha("1234");
-        admin.setAdmin(true);
-        usuarioService.incluir(admin);
+        Long qtdeUsuario = usuarioService.obterQtde();
 
-        Endereco endereco = new Endereco();
-        endereco = enderecoService.obterPorCep("21630130");
-        endereco.setComplemento("Casa");
+        if (qtdeUsuario == 0) {
+            Usuario admin = new Usuario();
+            admin.setEmail("admin@mygym.com");
+            admin.setNome("admin");
+            admin.setSenha("1234");
+            admin.setAdmin(true);
+            usuarioService.incluir(admin);
 
-        Usuario user1 = new Usuario();
-        user1.setEmail("user1@mygym.com");
-        user1.setNome("user1");
-        user1.setSenha("1234");
-        user1.setAdmin(false);
-        user1.setEndereco(endereco);
+            Endereco endereco = new Endereco();
+            endereco = enderecoService.obterPorCep("21630130");
+            endereco.setComplemento("Casa");
 
-        usuarioService.incluir(user1);
+            Usuario user1 = new Usuario();
+            user1.setEmail("user1@mygym.com");
+            user1.setNome("user1");
+            user1.setSenha("1234");
+            user1.setAdmin(false);
+            user1.setEndereco(endereco);
 
+            usuarioService.incluir(user1);
+        }
     }
 }

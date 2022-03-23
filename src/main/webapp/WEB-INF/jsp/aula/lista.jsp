@@ -49,6 +49,8 @@
                 <th>Id</th>
                 <th>Data</th>
                 <th>Duracao</th>
+                <th>Professor</th>
+                <th>QtdeAtividades</th>
                 <th></th>
             </tr>
             </thead>
@@ -58,6 +60,8 @@
                     <td>${aula.id}</td>
                     <td>${aula.data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))}</td>
                     <td>${aula.duracao}</td>
+                    <td>${aula.professor.nome}</td>
+                    <td>${aula.atividades.size()}</td>
                     <td><a href="/aula/${aula.id}/excluir">Excluir</a></td>
                 </tr>
             </c:forEach>

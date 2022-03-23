@@ -1,35 +1,21 @@
 package br.edu.infnet.appAula.model.domain;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "TUsuario")
 public class Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String nome;
     private String email;
     private String senha;
     private Boolean admin;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "idendereco")
     private Endereco endereco;
 
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "idUsuario")
     private List<Professor> professores;
 
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "idUsuario")
     private List<Atividade> atividades;
 
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "idUsuario")
     private List<Aula> aulas;
 
     public Usuario() {

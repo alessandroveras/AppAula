@@ -3,6 +3,7 @@ package br.edu.infnet.appAula.controller;
 import br.edu.infnet.appAula.model.domain.Aerobico;
 import br.edu.infnet.appAula.model.domain.Usuario;
 import br.edu.infnet.appAula.model.service.AerobicoService;
+import br.edu.infnet.appAula.model.service.AtividadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,8 @@ public class AerobicoController {
 
     @Autowired
     private AerobicoService aerobicoService;
+    @Autowired
+    private AtividadeService atividadeService;
 
     @GetMapping(value = "/aerobico")
     public String telaCadastro() {
@@ -53,7 +56,7 @@ public class AerobicoController {
         Aerobico aerobico = aerobicoService.obterPorId(id);
 
         try {
-            aerobicoService.excluir(id);
+            atividadeService.excluir(id);
             model.addAttribute("mensagem", "A atividade aerobica " + aerobico.getDescricao() + " foi removida com sucesso.");
         } catch (Exception e) {
             model.addAttribute("mensagem", "Existem aulas associadas a atividade " + aerobico.getDescricao() + "!! Impossível excluir.");

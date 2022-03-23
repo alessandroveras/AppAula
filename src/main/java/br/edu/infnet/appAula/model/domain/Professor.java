@@ -1,25 +1,15 @@
 package br.edu.infnet.appAula.model.domain;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "TProfessor")
 public class Professor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String nome;
     private String email;
     private String cpf;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "idendereco")
     private Endereco endereco;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
     public Professor() {

@@ -1,10 +1,9 @@
 package br.edu.infnet.appAula.model.service;
 
+import br.edu.infnet.appAula.clients.IMusculacaoClient;
 import br.edu.infnet.appAula.model.domain.Musculacao;
 import br.edu.infnet.appAula.model.domain.Usuario;
-import br.edu.infnet.appAula.model.repository.MusculacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,29 +12,25 @@ import java.util.List;
 public class MusculacaoService {
 
     @Autowired
-    private MusculacaoRepository musculacaoRepository;
+    private IMusculacaoClient musculacaoClient;
 
     public List<Musculacao> obterLista() {
-        return (List<Musculacao>) musculacaoRepository.findAll(Sort.by(Sort.Direction.ASC, "descricao"));
+        return (List<Musculacao>) musculacaoClient.obterLista();
     }
 
     public List<Musculacao> obterLista(Usuario usuario) {
-        return (List<Musculacao>) musculacaoRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "descricao"));
+        return (List<Musculacao>) musculacaoClient.obterLista(usuario.getId());
     }
 
     public void incluir(Musculacao musculacao) {
-        musculacaoRepository.save(musculacao);
-    }
-
-    public void excluir(Integer id) {
-        musculacaoRepository.deleteById(id);
+        musculacaoClient.incluir(musculacao);
     }
 
     public Musculacao obterPorId(Integer id) {
-        return musculacaoRepository.findById(id).orElse(null);
+        return musculacaoClient.obterPorId(id);
     }
 
     public long obterQtde() {
-        return musculacaoRepository.count();
+        return musculacaoClient.obterQtde();
     }
 }

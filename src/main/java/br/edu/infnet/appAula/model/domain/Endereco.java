@@ -1,13 +1,7 @@
 package br.edu.infnet.appAula.model.domain;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "TEndereco")
 public class Endereco {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String cep;
     private String logradouro;

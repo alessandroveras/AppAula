@@ -18,12 +18,12 @@ public interface IUsuarioClient {
     @DeleteMapping(value = "/{id}/excluir")
     public void excluir(@PathVariable Integer id);
 
+    @GetMapping(value = "/{id}/obter")
+    public Usuario obterPorId(@PathVariable Integer id);
+
     @GetMapping(value = "/qtde")
     public Long obterQtde();
 
     @PostMapping(value = "/validar")
     public Usuario validar(@RequestParam String email, @RequestParam String senha);
-
-    @GetMapping(value = "/{id}/obter")
-    public Usuario obterPorId(@PathVariable Integer id);
 }

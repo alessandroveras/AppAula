@@ -1,10 +1,9 @@
 package br.edu.infnet.appAula.model.service;
 
+import br.edu.infnet.appAula.clients.IAerobicoClient;
 import br.edu.infnet.appAula.model.domain.Aerobico;
 import br.edu.infnet.appAula.model.domain.Usuario;
-import br.edu.infnet.appAula.model.repository.AerobicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,30 +12,26 @@ import java.util.List;
 public class AerobicoService {
 
     @Autowired
-    private AerobicoRepository aerobicoRepository;
+    private IAerobicoClient aerobicoClient;
 
     public List<Aerobico> obterLista() {
-        return (List<Aerobico>) aerobicoRepository.findAll(Sort.by(Sort.Direction.ASC, "descricao"));
+        return (List<Aerobico>) aerobicoClient.obterLista();
     }
 
     public List<Aerobico> obterLista(Usuario usuario) {
-        return (List<Aerobico>) aerobicoRepository.findAll(usuario.getId(), Sort.by(Sort.Direction.ASC, "descricao"));
+        return (List<Aerobico>) aerobicoClient.obterLista(usuario.getId());
     }
 
     public void incluir(Aerobico aerobico) {
-        aerobicoRepository.save(aerobico);
-    }
-
-    public void excluir(Integer id) {
-        aerobicoRepository.deleteById(id);
+        aerobicoClient.incluir(aerobico);
     }
 
     public Aerobico obterPorId(Integer id) {
-        return aerobicoRepository.findById(id).orElse(null);
+        return aerobicoClient.obterPorId(id);
     }
 
     public long obterQtde() {
-        return aerobicoRepository.count();
+        return aerobicoClient.obterQtde();
     }
 
 }

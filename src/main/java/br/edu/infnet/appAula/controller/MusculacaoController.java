@@ -2,6 +2,7 @@ package br.edu.infnet.appAula.controller;
 
 import br.edu.infnet.appAula.model.domain.Musculacao;
 import br.edu.infnet.appAula.model.domain.Usuario;
+import br.edu.infnet.appAula.model.service.AtividadeService;
 import br.edu.infnet.appAula.model.service.MusculacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ public class MusculacaoController {
 
     @Autowired
     private MusculacaoService musculacaoService;
+    @Autowired
+    private AtividadeService atividadeService;
 
     @GetMapping(value = "/musculacao")
     public String telaCadastro() {
@@ -53,7 +56,7 @@ public class MusculacaoController {
         Musculacao musculacao = musculacaoService.obterPorId(id);
 
         try {
-            musculacaoService.excluir(id);
+            atividadeService.excluir(id);
             model.addAttribute("mensagem", "O musculacao " + musculacao.getDescricao() + " foi removido com sucesso.");
         } catch (Exception e) {
             model.addAttribute("mensagem", "Existem aulas associadas a atividade " + musculacao.getDescricao() + "!! Impossível excluir.");

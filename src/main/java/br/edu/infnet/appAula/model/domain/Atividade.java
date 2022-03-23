@@ -2,30 +2,30 @@ package br.edu.infnet.appAula.model.domain;
 
 import br.edu.infnet.appAula.exceptions.DuracaoMinutosInvalidException;
 import br.edu.infnet.appAula.exceptions.IntensidadeInvalidException;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "TAtividade")
-@Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "tipo")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Musculacao.class, name = "Musculacao"),
+        @JsonSubTypes.Type(value = Aerobico.class, name = "Aerobico")
+})
 public abstract class Atividade {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String descricao;
     private Integer duracaoMinutos;
     private String intensidade;
     private Boolean supervisionada;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    @ManyToMany(mappedBy = "atividades")
     private List<Aula> aulas;
 
     public Atividade() {
